@@ -52,6 +52,39 @@ namespace MauiStylesDemo.ViewModels
             this.ShowNameError = string.IsNullOrEmpty(Name);
         }
         #endregion
+        private bool showDateError;
+        public bool ShowDateError
+        {
+            get => showDateError;
+            set
+            {
+                showDateError = value;
+                OnPropertyChanged("ShowDateError");
+            }
+        }
+        private DateTime date;
+        public DateTime Date
+        {
+            get => date;
+            set
+            {
+                date = value;
+                ValidateDate();
+                OnPropertyChanged("Date");
+            }
+        }
+        private void ValidateDate()
+        {
+            DateTime today = DateTime.Today;
+            TimeSpan dif = today.Subtract(date);
+            bool b = true;
+            if (date == null) b= false;
+            else if (!(dif.Days/365 >= 13))
+            {
+                b = false;
+            }
+            
+        }
         #region גיל
         private bool showAgeError;
 

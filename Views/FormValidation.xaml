@@ -49,8 +49,18 @@
         </Grid>
         <Entry Placeholder="הכנס גיל גדול מ 13" Text="{Binding Age}" Style="{StaticResource entryStyle}" Keyboard="Numeric"/>
 
-
-        <Label Text="תאריך לידה" FontSize="Small" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Label Text="תאריך לידה" Grid.Column="0" Style="{StaticResource labelNameStyle}"/>
+            <Label Text="{Binding DateError}" IsVisible="{Binding ShowDateError}" Grid.Column="1" Style="{StaticResource labelErrorStyle}"/>
+        </Grid>
+      
         <DatePicker >
         </DatePicker>
 
